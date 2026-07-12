@@ -1,10 +1,24 @@
-const productos=[
-{n:'Licuadora Procesadora Sokany 5 en 1',p:'120.000',d:'Procesadora multifuncional.',i:['imagenes/licuadora1.jpg','imagenes/licuadora2.jpg','imagenes/licuadora3.jpg']},
-{n:'Smartwatch T500 Ultra',p:'30.000',d:'Pantalla HD y notificaciones.',i:['imagenes/reloj1.jpg','imagenes/reloj2.jpg','imagenes/reloj3.jpg']},
-{n:'Plancha de Keratina Profesional',p:'76.000',d:'Cabello liso y brillante.',i:['imagenes/plancha1.jpg','imagenes/plancha2.jpg','imagenes/plancha3.jpg']},
-{n:'Depiladora Láser IPL Profesional',p:'84.000',d:'Depilación IPL.',i:['imagenes/ipl1.jpg','imagenes/ipl2.jpg','imagenes/ipl3.jpg']},
-{n:'Parrilla Eléctrica Doble Sokany',p:'160.000',d:'Ideal para carnes y más.',i:['imagenes/parrilla1.jpg','imagenes/parrilla2.jpg','imagenes/parrilla3.jpg']},
-{n:'Extractor de Jugos Sokany',p:'200.000',d:'Jugos naturales.',i:['imagenes/extractor1.jpg','imagenes/extractor2.jpg','imagenes/extractor3.jpg']}
-];
-function render(f=''){let h='';productos.filter(x=>x.n.toLowerCase().includes(f.toLowerCase())).forEach(x=>{h+=`<div class="card"><img src="${x.i[0]}"><h2>${x.n}</h2><div class="precio">$${x.p} COP</div><p>${x.d}</p><button onclick="window.open('https://wa.me/573202125565?text='+encodeURIComponent('Hola, quiero comprar: '+x.n))">Comprar por WhatsApp</button></div>`});document.getElementById('productos').innerHTML=h;}
-function buscar(){render(document.getElementById('q').value)}render();
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donovego Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🛍 Donovego Store</h1>
+    <p>Productos de calidad al mejor precio</p>
+
+    <input type="text" id="buscador" placeholder="Buscar productos..." onkeyup="buscarProductos()">
+  </header>
+
+  <main>
+    <div class="productos" id="lista-productos"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
