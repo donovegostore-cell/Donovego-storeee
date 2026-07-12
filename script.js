@@ -60,3 +60,48 @@ imagenes: [
 ]
 }
 ];
+const contenedor = document.getElementById("productos");
+
+function mostrarProductos(lista) {
+    contenedor.innerHTML = "";
+
+    lista.forEach(producto => {
+        const card = document.createElement("div");
+        card.className = "producto";
+
+        let imagenes = "";
+
+        producto.imagenes.forEach(img => {
+            imagenes += `<img src="${img}" alt="${producto.nombre}">`;
+        });
+
+        card.innerHTML = `
+            <div class="galeria">
+                ${imagenes}
+            </div>
+
+            <h2>${producto.nombre}</h2>
+            <p>${producto.descripcion}</p>
+            <h3>${producto.precio}</h3>
+
+            <a class="boton" target="_blank"
+            href="https://wa.me/573201234567?text=Hola,%20quiero%20comprar%20${encodeURIComponent(producto.nombre)}">
+            Comprar por WhatsApp
+            </a>
+        `;
+
+        contenedor.appendChild(card);
+    });
+}
+
+mostrarProductos(productos);
+
+document.getElementById("buscador").addEventListener("input", function () {
+    const texto = this.value.toLowerCase();
+
+    const filtrados = productos.filter(p =>
+        p.nombre.toLowerCase().includes(texto)
+    );
+
+    mostrarProductos(filtrados);
+});
